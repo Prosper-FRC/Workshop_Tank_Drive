@@ -54,8 +54,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
   }
 
   public void configureMotors(CANSparkMax motor) {
+    motor.restoreFactoryDefaults();
     motor.setIdleMode(IdleMode.kBrake);
     motor.setSmartCurrentLimit(DriveConstants.DRIVE_CURRENT_LIMIT);
+    motor.burnFlash();
   }
 
 
