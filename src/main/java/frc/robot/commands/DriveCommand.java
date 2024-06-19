@@ -12,11 +12,16 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 
 public class DriveCommand extends Command {
   /** Creates a new DriveCommand. */
+
+  // Initialize DoubleSuppliers speed and theta as well as the DriveTrainSubsystem
   private DoubleSupplier speed;
   private DoubleSupplier theta;
   private DriveTrainSubsystem drive;
 
   public DriveCommand(DoubleSupplier speed, DoubleSupplier theta, DriveTrainSubsystem drive) {
+
+    // Set the values of the empty containers we made outside of the constructor to the values we recieve 
+    // when the DriveCommand is instantiated somewhere
     this.speed = speed;
     this.theta = theta;
     this.drive = drive;
@@ -32,6 +37,9 @@ public class DriveCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+
+    // Execute command runs periodically - here, you're calling the method arcadeDrive
+    // from DriveTrainSubsystem
     drive.arcadeDrive(speed.getAsDouble(), theta.getAsDouble());
   }
 
